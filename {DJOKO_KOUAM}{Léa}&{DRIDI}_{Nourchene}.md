@@ -12,22 +12,24 @@
 
 ## Answers
 
-1. Un exemple d'article récent : 
+### **Question 1 :**
+
+Un exemple d'article récent : 
 La panne informatique mondiale du 19 juillet 2024  causée par une mise à jour défectueuse du logiciel de sécurité Falcon Sensor de CrowdStrike. 
 
 
-Description du bug :
+**Description du bug :**
 Le bug a été causé par une mise à jour défectueuse du logiciel de sécurité Falcon Sensor, utilisé pour protéger les systèmes Windows. Cette mise à jour a introduit une anomalie qui empêchait les systèmes de démarrer correctement et de se connecter au réseau. 
 
 
-Nature du bug : 
+**Nature du bug : **
 ⇒ Bug global : 
 - Des milliers de systèmes Windows utilisant le logiciel Falcon Sensor ont été touchés.
 - Interaction complexe entre la mise à jour et le système, affectant tout le réseau
 → dysfonctionnements critiques à grande échelle partout dans le monde.
 
 
-Conséquences du bug : 
+**Conséquences du bug :** 
     *Impact sur les utilisateurs :
         -Interruption des services : Les systèmes Windows ne pouvaient plus démarrer, causant des pertes financières importantes. 
         -Ce bug a paralysé de nombreux secteurs, notamment les compagnies aériennes (des avions ont été cloués au sol), les banques, et les marchés financiers..
@@ -36,75 +38,79 @@ Conséquences du bug :
         -Des coûts de réparation importants pour créer des correctifs et gérer les réclamations des entreprises touchées.
 
 
-Spéculation sur les tests : Les tests qui auraient pu éviter le bug
-    -La relecture du code, tout simplement
-    -Les tests unitaires (tester chaque module indépendamment des autres)
-    -Les tests d’intégration (suivant un ordre pour bien intégrer les classes les unes après les autres, s’assurant qu’elles interagissent sans problèmes)
-    -Les test système , en tant qu’ensemble pour vérifier qu’il fonctionne correctement dans son environnement final
-    -Tests de Régression : Voir si les nouvelles modifications ont introduit de nouveaux bugs. Ce qui est crucial pour les mises à jour logicielles !!!
+**Spéculation sur les tests : Les tests qui auraient pu éviter le bug**
+- La relecture du code, tout simplement
+- Les tests unitaires (tester chaque module indépendamment des autres)
+- Les tests d’intégration (suivant un ordre pour bien intégrer les classes les unes après les autres, s’assurant qu’elles interagissent sans problèmes)
+- Les test système , en tant qu’ensemble pour vérifier qu’il fonctionne correctement dans son environnement final
+- Tests de Régression : Voir si les nouvelles modifications ont introduit de nouveaux bugs. Ce qui est crucial pour les mises à jour logicielles !!!
 
 
 
-2. Identifier les bugs
+### **Question 2 : Identifier les bugs**
 
-Nom du bug : A potential misleading comment
+**Nom du bug : A potential misleading comment**
 
 Ce bug concerne un problème dans la documentation JavaDoc. La bibliothèque concernée s’appelle Apache Commons Collections. Dans la situation présente, le commentaire associé à la méthode ne correspond pas au comportement réel de la méthode. Résultat : les développeurs sont induits en erreur. Il s’agit d’un bug global car il affecte tous les utilisateurs de la librairie Apache Commons Collections. Pour corriger cette erreur, il suffit de modifier la documentation JavaDoc de la manière suivante : 
 @throws IndexOutOfBoundsException if index < 0 or index >= size().
 Ainsi, le commentaire est cohérent avec le comportement de la méthode. Comme il s’agissait d’un bug lié à un commentaire mal rédigé, aucun test n’a été mis en place.
 
 
-3. Netflix et le Chaos Engineering
-( Selon le papier intitulé “Chaos Engineering” publié par Netflix dans IEEE Software et l’article “The Business Case for Chaos Engineering” publié par la IEEE Computer Society )
+### **Question 3 : Netflix et le Chaos Engineering**
+
+(Selon le papier intitulé “Chaos Engineering” publié par Netflix dans IEEE Software et l’article “The Business Case for Chaos Engineering” publié par la IEEE Computer Society)
 
 
-Types d’expériences : 
-    -Simulation de pannes régionales (simuler la défaillance d’un centre de données) pour tester la gestion du trafic si une région entière tombe.
-    -Injection de latence (ajouter de la latence entre les services) pour observer l’impact sur les performances.
-    -Suppression partielle de données (supprimer des données) pour vérifier la récupération. 
-    -Défaillance fonctionnelle (provoquer des erreurs aléatoires dans certaines fonctions) pour évaluer la gestion des erreurs.
-    -Tests de charge (augmenter artificiellement le trafic) pour simuler des charges élevées et tester la capacité du système.
+**Types d’expériences :** 
+- Simulation de pannes régionales (simuler la défaillance d’un centre de données) pour tester la gestion du trafic si une région entière tombe.
+- Injection de latence (ajouter de la latence entre les services) pour observer l’impact sur les performances.
+- Suppression partielle de données (supprimer des données) pour vérifier la récupération. 
+- Défaillance fonctionnelle (provoquer des erreurs aléatoires dans certaines fonctions) pour évaluer la gestion des erreurs.
+- Tests de charge (augmenter artificiellement le trafic) pour simuler des charges élevées et tester la capacité du système.
 
 
-Variables observées : 
-    -Disponibilité du service : Capacité du système à rester opérationnel malgré les pannes.
-    -Taux de réponse : Temps de réponse du système sous stress.
-    -Taux d’erreur : Fréquence des erreurs pendant les tests.
-    -Résilience des données : Capacité à récupérer et maintenir l'intégrité des données après des pertes.
+**Variables observées :** 
+- Disponibilité du service : Capacité du système à rester opérationnel malgré les pannes.
+- Taux de réponse : Temps de réponse du système sous stress.
+- Taux d’erreur : Fréquence des erreurs pendant les tests.
+- Résilience des données : Capacité à récupérer et maintenir l'intégrité des données après des pertes.
 
 
-Résultats obtenus : 
-→ Meilleure résilience (Correction des faiblesses avant qu'elles ne causent des pannes)
-→ Moins d’interruptions (Réduction des temps d'arrêt)
-→ Performances améliorées (Optimisation pour mieux gérer les charges élevées)
+**Résultats obtenus :**
+ 
+- Meilleure résilience (Correction des faiblesses avant qu'elles ne causent des pannes)
+- Moins d’interruptions (Réduction des temps d'arrêt)
+- Performances améliorées (Optimisation pour mieux gérer les charges élevées)
 
 
-Netflix est-elle la seule entreprise à réaliser ces expérimentations ?
+**Netflix est-elle la seule entreprise à réaliser ces expérimentations ?**
 → Non, Netflix n'est pas la seule à utiliser le Chaos Engineering. D'autres entreprises : Google, Facebook, Amazon ..
 
-→ Applications dans d'autres organisations :
+**Applications dans d'autres organisations :**
     *Systèmes bancaires :
-        -Expériences possibles : Simuler des pannes de serveurs, des défaillances de base de données ou des interruptions de réseau.
-        -Variables à observer : Disponibilité des services financiers, temps de réponse des transactions, sécurité et intégrité des données.
+        - Expériences possibles : Simuler des pannes de serveurs, des défaillances de base de données ou des interruptions de réseau.
+        - Variables à observer : Disponibilité des services financiers, temps de réponse des transactions, sécurité et intégrité des données.
     *Secteur de la santé :
-        -Expériences possibles : Tester la résilience des systèmes de gestion des dossiers médicaux électroniques en simulant des pannes de serveur ou des erreurs de données.
-        -Variables à observer : Continuité de l'accès aux dossiers médicaux, temps de réponse des systèmes, et précision des informations médicales.
-    * E-commerce :
-        -Expériences possibles : Simuler des pics de trafic lors de promotions ou des interruptions de paiement pour tester la gestion de la charge.
-        -Variables à observer : Performance des sites web, temps de réponse lors des pics de trafic, et intégrité des transactions.
+        - Expériences possibles : Tester la résilience des systèmes de gestion des dossiers médicaux électroniques en simulant des pannes de serveur ou des erreurs de données.
+        - Variables à observer : Continuité de l'accès aux dossiers médicaux, temps de réponse des systèmes, et précision des informations médicales.
+    *E-commerce :
+        - Expériences possibles : Simuler des pics de trafic lors de promotions ou des interruptions de paiement pour tester la gestion de la charge.
+        - Variables à observer : Performance des sites web, temps de réponse lors des pics de trafic, et intégrité des transactions.
     *Fournisseurs de cloud :
-        -Expériences possibles : Simuler des pannes de machines virtuelles, des interruptions de réseau ou des défaillances de stockage.
-        -Variables à observer : Disponibilité des services cloud, temps de récupération des données, et capacité à gérer les pics de charge.
+        - Expériences possibles : Simuler des pannes de machines virtuelles, des interruptions de réseau ou des défaillances de stockage.
+        - Variables à observer : Disponibilité des services cloud, temps de récupération des données, et capacité à gérer les pics de charge.
 
 
 
-4. Les avantages d’avoir une spécification formelle pour WebAssembly sont : 
-    → La rapidité d’exécution
-    → Exécution sécurisée
-    → Interopérabilité simple avec la plate-forme Web
-    → Compact et facile à décoder
-    → Facile à valider et compiler
-    → Facile à générer pour les producteurs
+### **Question 4 :**
+
+**Les avantages d’avoir une spécification formelle pour WebAssembly sont : **
+- La rapidité d’exécution
+- Exécution sécurisée
+- Interopérabilité simple avec la plate-forme Web
+- Compact et facile à décoder
+- Facile à valider et compiler
+- Facile à générer pour les producteurs
 
 **Code de bas niveau rapide**
 Il est généré par un compilateur C/C++ et est généralement optimisé avant l’exécution.
@@ -119,14 +125,16 @@ Le code transmis via le réseau doit être aussi compact que possible pour rédu
 La sécurité est indispensable sur le Web car le code provient de sources non fiables.
 
 Les implémentations de WebAssembly devraient être testées, même si elles sont basées sur une spécification formelle. Voici quelques raisons pour lesquelles le test est nécessaire :
-    → le code provient de sources non fiables,
-    → des erreurs d’implémentation peuvent survenir
-    → WebAssembly doit pouvoir être utilisé en combinaison avec d’autres langages comme C++ et Rust. Il faut vérifier que ces interactions se déroulent correctement.
+- le code provient de sources non fiables,
+- des erreurs d’implémentation peuvent survenir
+- WebAssembly doit pouvoir être utilisé en combinaison avec d’autres langages comme C++ et Rust. Il faut vérifier que ces interactions se déroulent correctement.
 
 
 
 
-5. Les principaux avantages de la spécification mécanisée :
+### **Question 5 :**
+
+**Les principaux avantages de la spécification mécanisée :**
    - Beaucoup de précision et de rigueur dans la formalisation
    - Beaucoup de vérification aussi (un interpréteur exécutable vérifié et un vérificateur de types)
    - Solidité du système de types
@@ -137,9 +145,9 @@ Les implémentations de WebAssembly devraient être testées, même si elles son
 
 
     **Artefacts dérivés**
-    -Interpréteur exécutable vérifié
-    -Vérificateur de types
-    -Preuve formelle de solidité du système de types
+- Interpréteur exécutable vérifié
+- Vérificateur de types
+- Preuve formelle de solidité du système de types
 
 
    ---- L'auteur a vérifié la spécification en utilisant Isabelle, un puissant prouveur de théorèmes, pour assurer la correction de la formalisation et des artefacts dérivés.-----
